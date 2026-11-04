@@ -3,7 +3,7 @@
 마우스나 손가락으로 숫자(0~9)를 그리면 어떤 숫자인지 알아맞히는 프로그램입니다.
 MNIST 데이터셋으로 학습한 신경망을 사용하며, 웹 버전과 데스크톱 버전이 있습니다.
 
-**데모:** https://&lt;GitHub 아이디&gt;.github.io/&lt;저장소 이름&gt;/
+**데모:** https://subinan-git.github.io/digit-recognizer/
 
 ## 웹 버전의 동작 방식
 
