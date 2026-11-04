@@ -1,0 +1,185 @@
+/* 색상은 변수로 정의하고, 다크 모드에서는 값만 바꿔 줌 */
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #616e7c;
+  --border: #d9e2ec;
+  --accent: #2e7d32;
+  --bar: #9fb3c8;
+  --button: #334e68;
+  --button-text: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12171c;
+    --card: #1c242c;
+    --text: #e4e7eb;
+    --muted: #9aa5b1;
+    --border: #323f4b;
+    --accent: #66bb6a;
+    --bar: #52606d;
+    --button: #627d98;
+    --button-text: #ffffff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 16px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header,
+main,
+footer {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+header p,
+footer p {
+  margin: 0;
+  color: var(--muted);
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.card {
+  flex: 1 1 300px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* 그리기 캔버스: 화면이 좁으면 비율을 유지하며 줄어듦 */
+#draw-canvas {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 8px;
+  cursor: crosshair;
+  touch-action: none; /* 터치로 그릴 때 화면이 스크롤되지 않도록 */
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+button {
+  padding: 8px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--button);
+  color: var(--button-text);
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.result-digit {
+  width: 96px;
+  font-size: 5rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  color: var(--accent);
+}
+
+.status {
+  margin-bottom: 8px;
+}
+
+.preview-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* 28x28 이미지를 흐리지 않고 픽셀 그대로 크게 보여 줌 */
+#preview-canvas {
+  width: 84px;
+  height: 84px;
+  margin-top: 4px;
+  image-rendering: pixelated;
+  border: 1px solid var(--border);
+}
+
+.prob-bars {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.prob-bars li {
+  display: grid;
+  grid-template-columns: 16px 1fr 44px;
+  align-items: center;
+  gap: 8px;
+  height: 20px;
+  font-size: 0.85rem;
+}
+
+.bar-track {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--bar);
+  transition: width 0.2s;
+}
+
+.prob-bars li.best .bar-fill {
+  background: var(--accent);
+}
+
+.bar-value {
+  text-align: right;
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 24px;
+  font-size: 0.85rem;
+}

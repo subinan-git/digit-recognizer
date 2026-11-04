@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digit Recognizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Handwritten Digit Recognizer</h1>
+    <p>Draw a digit (0&ndash;9) in the box. A neural network trained on MNIST runs right in your browser.</p>
+  </header>
+
+  <main>
+    <!-- 그리기 영역 -->
+    <section class="card">
+      <h2>Draw here</h2>
+      <canvas id="draw-canvas" width="280" height="280"></canvas>
+      <div class="buttons">
+        <button id="clear-button" type="button">Clear</button>
+      </div>
+    </section>
+
+    <!-- 예측 결과 영역 -->
+    <section class="card">
+      <h2>Prediction</h2>
+      <div class="result">
+        <div id="result-digit" class="result-digit">?</div>
+        <div>
+          <div id="status" class="status">Loading model...</div>
+          <div class="preview-label">What the model sees (28&times;28)</div>
+          <canvas id="preview-canvas" width="28" height="28"></canvas>
+        </div>
+      </div>
+      <ol id="prob-bars" class="prob-bars"></ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Model: 784 &rarr; 256 &rarr; 128 &rarr; 10 MLP (scikit-learn), inference in plain JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
